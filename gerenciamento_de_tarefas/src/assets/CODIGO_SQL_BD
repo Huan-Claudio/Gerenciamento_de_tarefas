@@ -1,0 +1,21 @@
+
+CREATE DATABASE mydatabase;
+
+USE mydatabase;
+
+CREATE TABLE usuarios (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  nome VARCHAR(50) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  senha VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE tarefas (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  titulo VARCHAR(100) NOT NULL,
+  descricao TEXT,
+  status ENUM('pendente', 'em_andamento', 'concluida') NOT NULL DEFAULT 'pendente',
+  id_usuario INT NOT NULL,
+  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
